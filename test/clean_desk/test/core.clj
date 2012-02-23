@@ -2,5 +2,6 @@
   (:use [clean-desk.core])
   (:use [clojure.test]))
 
-(deftest replace-me ;; FIXME: write
-  (is false "No tests have been written."))
+(deftest test-detect-mime
+  (is (instance? String (detect-mime (java.io.File. "core.clj"))))
+  (is (instance? String (detect-mime "foo.txt"))))
