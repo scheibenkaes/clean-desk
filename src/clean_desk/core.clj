@@ -1,5 +1,6 @@
 (ns clean-desk.core
   (:use [clojure.java.io :only [file]])
+  (:use [clojure.string :only [split]])
   (:use [clojure.contrib.io :only [file-str]])
   (:import javax.activation.MimetypesFileTypeMap))
 
@@ -25,3 +26,6 @@
 (defn make-mime-mapping [folder]
   (let [files (read-folder folder)]
     (reduce (fn [acc f] (update-in acc [(detect-mime f)] conj f)) {} files)))
+
+(defn subfolder-names-from-mime-mapping [mapping]
+  (reduce (fn [acc m] (conj acc (-> m first (split #"/") first))) #{} mapping))
