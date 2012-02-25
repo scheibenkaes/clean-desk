@@ -1,13 +1,13 @@
 # clean-desk
 
-FIXME: write description
+Move files from your desk to folder corresponding to their mime type.
 
 ## Usage
 
-FIXME: write
+Call (clean-desk)
 
 ## License
 
-Copyright (C) 2012 FIXME
+Copyright (C) 2012 Benjamin Klüglein
 
 Distributed under the Eclipse Public License, the same as Clojure.
