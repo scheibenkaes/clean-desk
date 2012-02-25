@@ -1,10 +1,12 @@
 # clean-desk
 
-Move files from your desk to folder corresponding to their mime type.
+Move files from your desk to folders corresponding to their mime type.
+
+e.g. ~/Desktop/foo.txt -> ~/Desktop/clean/text/foo.txt
 
 ## Usage
 
-Call (clean-desk)
+Call (clean-up)
 
 ## License
 
