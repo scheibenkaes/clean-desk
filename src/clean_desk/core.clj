@@ -1,8 +1,10 @@
 (ns clean-desk.core
+  (:use clojure.tools.cli)
   (:use [clojure.java.io :only [file]])
   (:use [clojure.string :only [split]])
   (:use [clojure.contrib.io :only [file-str]])
-  (:import javax.activation.MimetypesFileTypeMap))
+  (:import javax.activation.MimetypesFileTypeMap)
+  (:gen-class))
 
 (def mime-map (MimetypesFileTypeMap.))
 
@@ -47,3 +49,12 @@
   ([folder target]
      (let [mapping (make-mime-mapping folder)]
        (move-files target mapping))))
+
+(defn -main [& args]
+  (let [[opts _ help] (cli args
+                           ["-f" "--folder" "Folder to clean" :default desktop]
+                           ["-o" "--output" "Folder to put files to" :default default-dest-dir]
+                           ["-h" "--help" "Print help text" :flag true :default false])]
+    (if-not (:help opts)
+      (clean-up (:folder opts) (:output opts))
+      (println help))))
